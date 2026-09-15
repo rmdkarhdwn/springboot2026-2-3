@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: backend
+
+  datasource:
+    url: "jdbc:mysql://localhost:3307/springdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul"
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: ture
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:alksdnflkjqnwe}
