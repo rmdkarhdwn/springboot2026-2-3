@@ -1,18 +1,16 @@
 package com.example.ex06.entiy;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Setter
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class Member {
     //Member(){}
@@ -23,7 +21,14 @@ public class Member {
 //    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Schema(accessMode = Schema.AccessMode.READ_ONLY)
+    private Long id;
+    @Schema(example = "홍길동")
     private String name;
+    @Schema(example = "test@gmail.com")
     private String email;
+    public void update(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
 }
